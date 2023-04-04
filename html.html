@@ -11,13 +11,9 @@
 <body>
     <div class="row">
         <div class="col-10 mx-auto mt-5 rounded-4 card">
-            <!-- judul -->
             <h1 class="align-self-center card-title my-4">
                 Personal IP Calculator
             </h1>
-            <!-- akhir judul -->
-
-            <!-- form -->
             <form action="#" onsubmit="outData();" class="d-flex flex-column">
 
                 <div class="row align-items-center mt-3">
@@ -44,13 +40,8 @@
                         <input type="number" min="0" max="4" id="inputNilai" class="form-control" placeholder="4">
                     </div>
                 </div>
-                <!-- akhir form -->
-    
-                <button type="submit" class="btn btn-outline-success mt-5 align-self-center">SUBMIT</button>
-    
+                <button type="submit" class="btn btn-outline-success mt-5 align-self-center">SUBMIT</button>    
             </form>
-            
-            <!-- tabel nilai -->
             <table border="2" class="table table-bordered  mt-3" id="outputTable">
                 <tr class="table-dark">
                     <td>No.</td>
@@ -60,16 +51,12 @@
                     <td>Nilai Huruf</td>
                 </tr>
             </table>
-            <!-- akhir tabel nilai -->
-
-            <!-- output IP -->
             <div class="row my-4 card bg-success w-25 mx-auto rounded-3">
                 <div class="mx-auto p-3 ip d-flex justify-content-evenly">
                     <div>IP : </div> 
                     <span id="hasilIP"></span>
                 </div>
             </div>
-            <!-- akhir output IP -->
         </div>
     </div>
 </body>
