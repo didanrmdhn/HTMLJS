@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lanrg="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KASIR TOKO</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="style1.css">
+</head>
+<body>
+    <div class="row">
+        <div class="col-10 mx-auto mt-5 rounded-4 card">
+            <!-- judul -->
+            <h1 class="align-self-center card-title my-4">
+                Nota Pembelian
+            </h1>
+            <!-- akhir judul -->
+
+            <!-- form -->
+            <form action="#" onsubmit="outData();" class="d-flex flex-column">
+
+                <div class="row align-items-center mt-3">
+                    <div class="col-2">
+                        <label for="inputBarang" class="col-form-label">Nama Barang</label>
+                    </div>
+                    <div class="col">
+                        <input type="text" id="inputBarang" class="form-control" placeholder="Susu Kental Manis">
+                    </div>
+                </div>
+                <div class="row align-items-center mt-3">
+                    <div class="col-2">
+                        <label for="inputJumlahBarang" class="col-form-label">Jumlah Barang</label>
+                    </div>
+                    <div class="col">
+                        <input type="number" id="inputJumlahBarang" class="form-control" placeholder="4">
+                    </div>
+                </div>
+                <div class="row align-items-center mt-3">
+                    <div class="col-2">
+                        <label for="inputHarga" class="col-form-label">Harga Barang</label>
+                    </div>
+                    <div class="col">
+                        <input type="number" id="inputHarga" class="form-control" placeholder="40000">
+                    </div>
+                </div>
+                <div class="row align-items-center mt-3">
+                    <div class="col-2">
+                        <label for="inputDiskon" class="col-form-label">Diskon Barang</label>
+                    </div>
+                    <div class="col">
+                        <input type="number" id="inputDiskon" min="0" max="100" class="form-control" placeholder="15">
+                    </div>
+                </div>
+                <!-- akhir form -->
+    
+                <button type="submit" class="btn btn-outline-success mt-5 align-self-center">SUBMIT</button>
+    
+            </form>
+            
+            <!-- tabel nilai -->
+            <table border="2" class="table table-bordered  mt-3" id="outputTable">
+                <tr class="table-dark">
+                    <td>No.</td>
+                    <td>Nama Barang</td>
+                    <td>Jumlah Barang</td>
+                    <td>Harga Barang</td>
+                    <td>Diskon Barang</td>
+                    <td>Total Harga</td>
+                </tr>
+            </table>
+            <!-- akhir tabel nilai -->
+
+            <!-- output IP -->
+            <div class="row my-4 card bg-success w-25 mx-auto rounded-3">
+                <div class="mx-auto p-3 ip d-flex justify-content-evenly">
+                    <div>Total : </div> 
+                    <span id="totalHarga"></span>
+                </div>
+            </div>
+            <!-- akhir output IP -->
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    function outData() {
+        // Mendapatkan nilai dari input
+        var inputBarang = document.getElementById("inputBarang").value;
+        var inputJumlahBarang = document.getElementById("inputJumlahBarang").value;
+        var inputHarga = document.getElementById("inputHarga").value;
+        var inputDiskon = document.getElementById("inputDiskon").value;
+
+        // Menghitung harga total dan harga akhir
+        var hargaTotal = inputJumlahBarang * inputHarga;
+        var hargaDiskon = hargaTotal * inputDiskon / 100;
+        var hargaAkhir = hargaTotal - hargaDiskon;
+
+        // Menambahkan data ke dalam tabel
+        var table = document.getElementById("outputTable");
+        var row = table.insertRow(-1);
+        var no = table.rows.length - 1;
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        var cell3 = row.insertCell(2);
+        var cell4 = row.insertCell(3);
+        var cell5 = row.insertCell(4);
+        var cell6 = row.insertCell(5);
+        cell1.innerHTML = no;
+        cell2.innerHTML = inputBarang;
+        cell3.innerHTML = inputJumlahBarang;
+        cell4.innerHTML = inputHarga;
+        cell5.innerHTML = inputDiskon + "%";
+        cell6.innerHTML = hargaAkhir;
+
+        // Menghitung total harga
+        var totalHarga = 0;
+        for (var i = 1; i < table.rows.length; i++) {
+            totalHarga += parseInt(table.rows[i].cells[5].innerHTML);
+        }
+
+        // Menampilkan total harga
+        document.getElementById("totalHarga").innerHTML = totalHarga;
+    }
+</script>

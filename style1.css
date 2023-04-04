@@ -1,0 +1,22 @@
+.ip {
+    color: white;
+}
+
+.form-control::placeholder {
+    color: lightgray;
+
+}
+
+td {
+    text-align: center;
+}
+
+h1 {
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+}
+
+body {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: medium;
+}
