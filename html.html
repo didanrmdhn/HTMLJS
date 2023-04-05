@@ -63,42 +63,58 @@
 </html>
 
 <script>
+    // Deklarasi array untuk menyimpan nilai SKS dan nilai angka
     let sksArr = [];
     let nilaiArr = [];
-    
-    // fungsi konversi nilai skala 4 ke huruf
-    const konversiNilai = (nilai) => {
-        if (nilai < 0 || nilai > 4) return "Nilai tidak valid";
-        else if (nilai < 1) return "E";
-        else if (nilai < 2) return "D";
-        else if (nilai < 3) return "C";
-        else if (nilai < 4) return "B";
-        else return "A";
-    }
 
+    // Fungsi untuk mengonversi nilai angka menjadi nilai huruf
+    const konversiNilai = (nilai) => {
+        // Jika nilai angka < 1
+        if (nilai < 1) return "E";
+        // Jika nilai angka < 2
+        else if (nilai < 2) return "D";
+        // Jika nilai angka < 3
+        else if (nilai < 3) return "C";
+        // Jika nilai angka < 4
+        else if (nilai < 4) return "B";
+        // Jika nilai angka = 4
+        else return "A";
+    };
+
+    // Fungsi untuk menghitung IPK
     const hitungIP = () => {
+        // Menghitung total SKS
         const sksTotal = sksArr.reduce((total, sks) => total + sks, 0);
+        // Menghitung total nilai
         const nilaiTotal = sksArr.reduce((total, sks, i) => total + sks * nilaiArr[i], 0);
+        // Menghitung IPK
         return (nilaiTotal / sksTotal).toFixed(2);
     };
 
+    // Fungsi untuk menampilkan data pada tabel
     const outData = () => {
+        // Mendapatkan nilai dari input
         const matkul = document.getElementById("inputMataKuliah").value;
         const sks = parseInt(document.getElementById("inputJumlahSKS").value);
         const nilai = parseFloat(document.getElementById("inputNilai").value);
-  
+
+        // Mengonversi nilai angka menjadi nilai huruf
         const nilaiHuruf = konversiNilai(nilai);
+
+        // Menambahkan data ke dalam tabel
         const table = document.getElementById("outputTable");
         const row = table.insertRow(-1);
-        row.insertCell(0).textContent = table.rows.length - 1;
-        row.insertCell(1).textContent = matkul;
-        row.insertCell(2).textContent = sks;
-        row.insertCell(3).textContent = nilai;
-        row.insertCell(4).textContent = nilaiHuruf;
+        row.insertCell(0).textContent = table.rows.length - 1; // Nomor urut
+        row.insertCell(1).textContent = matkul; // Nama mata kuliah
+        row.insertCell(2).textContent = sks; // Jumlah SKS
+        row.insertCell(3).textContent = nilai; // Nilai angka
+        row.insertCell(4).textContent = nilaiHuruf; // Nilai huruf
 
+        // Menambahkan nilai SKS dan nilai angka ke dalam array
         sksArr.push(sks);
         nilaiArr.push(nilai);
 
+        // Menampilkan hasil IPK
         document.getElementById("hasilIP").textContent = hitungIP();
     };
 </script>

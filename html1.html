@@ -72,6 +72,7 @@
 </html>
 
 <script>
+    // Fungsi untuk menambahkan data ke dalam tabel
     function outData() {
         // Mendapatkan nilai dari input
         var inputBarang = document.getElementById("inputBarang").value;
@@ -86,28 +87,29 @@
 
         // Menambahkan data ke dalam tabel
         var table = document.getElementById("outputTable");
-        var row = table.insertRow(-1);
-        var no = table.rows.length - 1;
-        var cell1 = row.insertCell(0);
-        var cell2 = row.insertCell(1);
-        var cell3 = row.insertCell(2);
-        var cell4 = row.insertCell(3);
-        var cell5 = row.insertCell(4);
-        var cell6 = row.insertCell(5);
-        cell1.innerHTML = no;
-        cell2.innerHTML = inputBarang;
-        cell3.innerHTML = inputJumlahBarang;
-        cell4.innerHTML = inputHarga;
-        cell5.innerHTML = inputDiskon + "%";
-        cell6.innerHTML = hargaAkhir;
+        var row = table.insertRow(-1); // Menambahkan baris baru pada akhir tabel
+        var no = table.rows.length - 1; // Menghitung nomor urut
+        var cell1 = row.insertCell(0); // Menambahkan sel pada kolom 1
+        var cell2 = row.insertCell(1); // Menambahkan sel pada kolom 2
+        var cell3 = row.insertCell(2); // Menambahkan sel pada kolom 3
+        var cell4 = row.insertCell(3); // Menambahkan sel pada kolom 4
+        var cell5 = row.insertCell(4); // Menambahkan sel pada kolom 5
+        var cell6 = row.insertCell(5); // Menambahkan sel pada kolom 6
+        cell1.innerHTML = no; // Menampilkan nomor urut pada kolom 1
+        cell2.innerHTML = inputBarang; // Menampilkan nama barang pada kolom 2
+        cell3.innerHTML = inputJumlahBarang; // Menampilkan jumlah barang pada kolom 3
+        cell4.innerHTML = inputHarga; // Menampilkan harga satuan pada kolom 4
+        cell5.innerHTML = inputDiskon + "%"; // Menampilkan persentase diskon pada kolom 5
+        cell6.innerHTML = hargaAkhir; // Menampilkan harga akhir pada kolom 6
 
         // Menghitung total harga
         var totalHarga = 0;
         for (var i = 1; i < table.rows.length; i++) {
+            // Menjumlahkan harga akhir dari setiap baris
             totalHarga += parseInt(table.rows[i].cells[5].innerHTML);
         }
 
-        // Menampilkan total harga
+        // Menampilkan total harga pada halaman
         document.getElementById("totalHarga").innerHTML = totalHarga;
     }
 </script>
